@@ -12,6 +12,7 @@ function renderBooks() {
     }
 }
 
+
 function getBooksTemplate(indexBook) {
     const book = books[indexBook];
 
@@ -23,7 +24,13 @@ function getBooksTemplate(indexBook) {
 
     return `
         <div class="book">
+        <div>
             <h2>${book.name}</h2>
+            <button class="like-btn" onclick="likeBook(${indexBook})">
+                <img class="dislike-img" id="likeDisabled-${indexBook}" src="./img/like-disabled.jpg" alt="Like Disabled" style="display: ${book.liked ? 'none' : 'block'}">
+                <img class="like-img" id="likeEnabled-${indexBook}" src="./img/like-enabled.jpg" alt="Like Enabled" style="display: ${book.liked ? 'block' : 'none'}">
+            </button>
+             </div>
             <p><strong>Author:</strong> ${book.author}</p>
             <p id="likesCount-${indexBook}"><strong>Likes:</strong> ${book.likes}</p>
             <p id="likedText-${indexBook}"><strong>Liked:</strong> ${book.liked ? "Yes" : "No"}</p>
@@ -34,15 +41,16 @@ function getBooksTemplate(indexBook) {
             <ul>
                 ${commentsHTML}
             </ul>
+            <div class="input-content">
             <input id="commentInput-${indexBook}" type="text" placeholder="Comment...">
-            <button onclick="addComment(${indexBook})">Add Comment</button>
-            <button class="like-btn" onclick="likeBook(${indexBook})">
-                <img class="dislike-img" id="likeDisabled-${indexBook}" src="./img/like-disabled.jpg" alt="Like Disabled" style="display: ${book.liked ? 'none' : 'block'}">
-                <img class="like-img" id="likeEnabled-${indexBook}" src="./img/like-enabled.jpg" alt="Like Enabled" style="display: ${book.liked ? 'block' : 'none'}">
-            </button>
+             <button  onclick="addComment(${indexBook})"><img class="send-btn" src="./img/send.png" alt="Icon"></button>
+             </div>
+           
+            
         </div>
     `;
 }
+
 
 function addComment(indexBook) {
     const commentInputRef = document.getElementById(`commentInput-${indexBook}`);
@@ -51,19 +59,19 @@ function addComment(indexBook) {
     if (commentText) {
         const book = books[indexBook];
         const newComment = {
-            name: "Albina",  // Can be replaced with dynamic user name
+            name: "Albina",  
             comment: commentText,
         };
 
         book.comments.push(newComment);
-        commentInputRef.value = ""; // Clear the input
+        commentInputRef.value = ""; 
 
-        // Save books to localStorage after updating
+       
         saveBooksToLocalStorage();
-
-        renderBooks();  // Re-render the books
+        renderBooks();  
     }
 }
+
 
 function likeBook(indexBook) {
     let book = books[indexBook];
@@ -72,11 +80,9 @@ function likeBook(indexBook) {
     let likesCountRef = document.getElementById(`likesCount-${indexBook}`);
     let likedTextRef = document.getElementById(`likedText-${indexBook}`);
 
-    // Toggle the liked state of the book
     book.liked = !book.liked;
     book.likes += book.liked ? 1 : -1;
 
-    // Update button states
     if (book.liked) {
         likeDisabledRef.style.display = "none";
         likeEnabledRef.style.display = "block";
@@ -85,26 +91,21 @@ function likeBook(indexBook) {
         likeEnabledRef.style.display = "none";
     }
 
-    // Update the like count
     likesCountRef.innerHTML = `<strong>Likes:</strong> ${book.likes}`;
-
-    // Update the liked text
     likedTextRef.innerHTML = `<strong>Liked:</strong> ${book.liked ? "Yes" : "No"}`;
 
-    // Save the updated book data to localStorage
     saveBooksToLocalStorage();
 }
 
-// Function to load books data from localStorage
+
 function loadBooksFromLocalStorage() {
     const savedBooks = localStorage.getItem('books');
     if (savedBooks) {
-        // Only overwrite the existing books if localStorage data is available
         books = JSON.parse(savedBooks);
     }
 }
 
-// Function to save books data to localStorage
+
 function saveBooksToLocalStorage() {
     localStorage.setItem('books', JSON.stringify(books));
 }

@@ -1,17 +1,187 @@
-.like-img{
-    width:50px;
-    height:50px;
+/* Allgemeine Stile */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+    color: #212529;
+    line-height: 1.6;
 }
 
-.like-img{
-    display:none;
+h1, h2, h3 {
+    color: #343a40;
+    margin-bottom: 0.5em;
 }
 
-.dislike-img {
-    width:50px;
-    height:50px;
+p {
+    margin: 0.5em 0;
 }
 
-.book{
-    border: 20px solid black;
+/* Container für den Inhalt */
+.content {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Buch-Stil */
+.book {
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgb(120, 185, 234);
+}
+
+.book h2 {
+    font-size: 1.5em;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.book p {
+    font-size: 1em;
+    color: #6c757d;
+    margin-bottom: 8px;
+}
+
+.book ul {
+    padding-left: 20px;
+    margin: 10px 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.book ul li {
+    font-size: 0.95em;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.book ul li:last-child {
+    border-bottom: none;
+}
+
+.book ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+.book ul::-webkit-scrollbar-thumb {
+    background-color: #adb5bd;
+    border-radius: 4px;
+}
+
+.book ul::-webkit-scrollbar-thumb:hover {
+    background-color: #868e96;
+}
+
+
+.book input{
+    width: 95%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.book button {
+    width: 2px;
+    height: 2px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.send-btn{
+    height: 40px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+
+}
+
+
+/* Like-Button */
+.like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.like-btn:hover {
+    transform: scale(1.1);
+}
+
+.like-img, .dislike-img {
+    width: 35px;
+    height: 35px;
+    padding-right:40px;
+}
+
+/* Flexbox für Buttons und Kommentare */
+.book div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.input-content{
+display: flex;
+align-items: center;
+padding: 5px;
+}
+
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+    }
+
+    .book {
+        padding: 15px;
+    }
+
+    .book input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .book button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .book ul {
+        max-height: 150px;
+    }
 }
