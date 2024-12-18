@@ -1,7 +1,8 @@
 function init() {
-    loadBooksFromLocalStorage(); // Load books from localStorage when the page is loaded
+    loadBooksFromLocalStorage();
     renderBooks();
 }
+
 
 function renderBooks() {
     let contentBooksRef = document.getElementById('content');
@@ -24,13 +25,18 @@ function getBooksTemplate(indexBook) {
 
     return `
         <div class="book">
-        <div>
-            <h2>${book.name}</h2>
-            <button class="like-btn" onclick="likeBook(${indexBook})">
-                <img class="dislike-img" id="likeDisabled-${indexBook}" src="./img/like-disabled.jpg" alt="Like Disabled" style="display: ${book.liked ? 'none' : 'block'}">
-                <img class="like-img" id="likeEnabled-${indexBook}" src="./img/like-enabled.jpg" alt="Like Enabled" style="display: ${book.liked ? 'block' : 'none'}">
-            </button>
-             </div>
+            <div class="img-title-like">
+                <img class="book-img" src="${book.imageUrl}" alt="Book Photo">
+            <div class="title-like">
+                <h2>${book.name}</h2>
+                <div>
+                <button class="like-btn" onclick="likeBook(${indexBook})">
+                    <img class="dislike-img" id="likeDisabled-${indexBook}" src="./img/like-disabled.jpg" alt="Like Disabled" style="display: ${book.liked ? 'none' : 'block'}">
+                    <img class="like-img" id="likeEnabled-${indexBook}" src="./img/like-enabled.jpg" alt="Like Enabled" style="display: ${book.liked ? 'block' : 'none'}">
+                </button>
+                </div>
+            </div>
+            </div>
             <p><strong>Author:</strong> ${book.author}</p>
             <p id="likesCount-${indexBook}"><strong>Likes:</strong> ${book.likes}</p>
             <p id="likedText-${indexBook}"><strong>Liked:</strong> ${book.liked ? "Yes" : "No"}</p>
@@ -45,8 +51,6 @@ function getBooksTemplate(indexBook) {
             <input id="commentInput-${indexBook}" type="text" placeholder="Comment...">
              <button  onclick="addComment(${indexBook})"><img class="send-btn" src="./img/send.png" alt="Icon"></button>
              </div>
-           
-            
         </div>
     `;
 }
@@ -59,16 +63,15 @@ function addComment(indexBook) {
     if (commentText) {
         const book = books[indexBook];
         const newComment = {
-            name: "Albina",  
+            name: "Albina",
             comment: commentText,
         };
 
         book.comments.push(newComment);
-        commentInputRef.value = ""; 
-
-       
+        commentInputRef.value = "";
+        
         saveBooksToLocalStorage();
-        renderBooks();  
+        renderBooks();
     }
 }
 

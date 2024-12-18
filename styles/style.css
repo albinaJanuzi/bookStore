@@ -1,4 +1,3 @@
-/* Allgemeine Stile */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -17,7 +16,6 @@ p {
     margin: 0.5em 0;
 }
 
-/* Container für den Inhalt */
 .content {
     max-width: 1000px;
     margin: 20px auto;
@@ -27,14 +25,13 @@ p {
     border-radius: 10px;
 }
 
-/* Buch-Stil */
 .book {
     border: 1px solid #dee2e6;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
     background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -44,9 +41,10 @@ p {
 }
 
 .book h2 {
-    font-size: 1.5em;
+    font-size: 25px;
     color: #495057;
     margin-bottom: 10px;
+    padding-left: 20px;
 }
 
 .book p {
@@ -60,7 +58,6 @@ p {
     margin: 10px 0;
     max-height: 200px;
     overflow-y: auto;
-    border: 1px solid #ced4da;
     border-radius: 5px;
     background-color: #ffffff;
 }
@@ -89,50 +86,35 @@ p {
     background-color: #868e96;
 }
 
-
 .book input{
     width: 95%;
     padding: 10px;
     margin-right: 10px;
-    border: 1px solid #ced4da;
+    border: none;
     border-radius: 5px;
     font-size: 1em;
-    box-sizing: border-box;
 }
 
 .book button {
-    width: 2px;
-    height: 2px;
     color: #ffffff;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease-in-out;
+    padding: 0;
 }
 
 .send-btn{
     height: 40px;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease-in-out;
-
 }
 
-
-/* Like-Button */
 .like-btn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     outline: none;
-    transition: transform 0.2s ease-in-out;
 }
 
 .like-btn:hover {
@@ -142,46 +124,24 @@ p {
 .like-img, .dislike-img {
     width: 35px;
     height: 35px;
-    padding-right:40px;
+    padding-left: 20px;
 }
 
-/* Flexbox für Buttons und Kommentare */
-.book div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-}
 .input-content{
 display: flex;
 align-items: center;
 padding: 5px;
 }
 
-
-
-/* Responsiveness */
-@media (max-width: 768px) {
-    .content {
-        padding: 15px;
-    }
-
-    .book {
-        padding: 15px;
-    }
-
-    .book input[type="text"] {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .book button {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .book ul {
-        max-height: 150px;
-    }
+.book-img{
+    width: 180px;
+    height:180px;
 }
+
+.img-title-like{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
