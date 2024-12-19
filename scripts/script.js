@@ -44,7 +44,7 @@ function getBooksTemplate(indexBook) {
             <p><strong>Published Year:</strong> ${book.publishedYear}</p>
             <p><strong>Genre:</strong> ${book.genre}</p>
             <h3>Comments:</h3>
-            <ul>
+            <ul id="commentsList-${indexBook}">
                 ${commentsHTML}
             </ul>
             <div class="input-content">
@@ -69,10 +69,23 @@ function addComment(indexBook) {
 
         book.comments.push(newComment);
         commentInputRef.value = "";
-        
+
         saveBooksToLocalStorage();
-        renderBooks();
+          renderComments(indexBook);
     }
+}
+
+function renderComments(indexBook) {
+    const book = books[indexBook];
+    const commentsListRef = document.getElementById(`commentsList-${indexBook}`);
+
+    let commentsHTML = '';
+    for (let i = 0; i < book.comments.length; i++) {
+        const comment = book.comments[i];
+        commentsHTML += `<li><strong>${comment.name}:</strong> ${comment.comment}</li>`;
+    }
+
+    commentsListRef.innerHTML = commentsHTML;
 }
 
 

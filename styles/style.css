@@ -136,6 +136,7 @@ padding: 5px;
 .book-img{
     width: 180px;
     height:180px;
+    object-fit: cover;
 }
 
 .img-title-like{
@@ -144,4 +145,27 @@ padding: 5px;
     align-items: center;
 }
 
+@media (max-width: 650px) {
+    .img-title-like {
+        flex-direction: column;
+    }
 
+    .book h2 {
+        padding-left: 0;
+    }
+
+    .title-like{
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .book{
+        padding:5px;
+    }
+
+    .book h2 {
+        font-size: 20px;
+    }
+}
